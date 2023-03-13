@@ -1,0 +1,45 @@
+---
+title: "P6"
+author: "Jose Antonio Vallet Lopez"
+output: 
+  pdf_document: 
+    latex_engine: xelatex
+date: "2023-03-13"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Introduccicon
+### Ejercicio 1
+
+A continuacion explicaremos las diferencias entre numeros pseudoaleatorios y aleatorios. 
+Para crear numeros pseudoaleatorios utilizamos la funcion `rnorm()`
+```{r echo=TRUE}
+rnorm(5)
+rnorm(5)
+```
+
+
+Pero para crear numeros aleatorios, debemos crear antes una semilla, con la funcion `set.seed()`. De esta manera, creamos los mismos numeros aleatorios con la semilla 1, tanto por separado "5,5" como juntos, "10". 
+
+```{r echo=TRUE}
+set.seed(1)
+rnorm(5)
+rnorm(5)
+
+set.seed(1)
+rnorm(10)
+
+```
+## Ejercicio 2
+Sometemos las dos variables a una contrastacion de hipotesis. Dado que el nivel de confianza es 0.05, el p-value mas alto sera el que tenga mas confianza, el que mas se acerac a una distribucion normal. En este caso, la Exponencial. 
+```{r}
+x<-rnorm(1000)
+Exponencial<-rexp(x)
+Normal<-rnorm(x)
+
+shapiro.test(Exponencial)
+shapiro.test(Normal)
+```
+
